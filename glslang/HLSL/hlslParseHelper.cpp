@@ -74,11 +74,11 @@ HlslParseContext::HlslParseContext(TSymbolTable& symbolTable, TIntermediate& int
 {
     globalUniformDefaults.clear();
     globalUniformDefaults.layoutMatrix = ElmColumnMajor;
-    globalUniformDefaults.layoutPacking = ElpScalar;
+    globalUniformDefaults.layoutPacking = ElpStd140;
 
     globalBufferDefaults.clear();
     globalBufferDefaults.layoutMatrix = ElmColumnMajor;
-    globalBufferDefaults.layoutPacking = ElpScalar;
+    globalBufferDefaults.layoutPacking = ElpStd430;
 
     globalInputDefaults.clear();
     globalOutputDefaults.clear();
