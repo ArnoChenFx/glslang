@@ -73,11 +73,11 @@ HlslParseContext::HlslParseContext(TSymbolTable& symbolTable, TIntermediate& int
     parsingEntrypointParameters(false)
 {
     globalUniformDefaults.clear();
-    globalUniformDefaults.layoutMatrix = ElmRowMajor;
+    globalUniformDefaults.layoutMatrix = ElmColumnMajor;
     globalUniformDefaults.layoutPacking = ElpStd140;
 
     globalBufferDefaults.clear();
-    globalBufferDefaults.layoutMatrix = ElmRowMajor;
+    globalBufferDefaults.layoutMatrix = ElmColumnMajor;
     globalBufferDefaults.layoutPacking = ElpStd430;
 
     globalInputDefaults.clear();
@@ -1978,6 +1978,13 @@ void HlslParseContext::transferTypeAttributes(const TSourceLoc& loc, const TAttr
                 setSpecConstantId(loc, type.getQualifier(), value);
             }
             break;
+
+        // layout
+        case EatPackingLayoutScalar: type.getQualifier().layoutPacking = TLayoutPacking::ElpScalar; break;
+        case EatPackingLayoutStd140: type.getQualifier().layoutPacking = TLayoutPacking::ElpStd140; break;
+        case EatPackingLayoutStd430: type.getQualifier().layoutPacking = TLayoutPacking::ElpStd430; break;
+        case EatMatrixLayoutRowMajor: type.getQualifier().layoutMatrix = TLayoutMatrix::ElmRowMajor; break;
+        case EatMatrixLayoutColumnMajor: type.getQualifier().layoutMatrix = TLayoutMatrix::ElmColumnMajor; break;
 
         // image formats
         case EatFormatRgba32f:      type.getQualifier().layoutFormat = ElfRgba32f;      break;

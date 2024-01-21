@@ -108,7 +108,17 @@ namespace glslang {
 
         // handle names with no namespace
 
-        if (name == "allow_uav_condition")
+        if (name == "scalar")
+            return EatPackingLayoutScalar;
+        else if (name == "column")
+            return EatMatrixLayoutColumnMajor;
+        else if (name == "std140")
+            return EatPackingLayoutStd140;
+        else if (name == "std430")
+            return EatPackingLayoutStd430;
+        else if (name == "row")
+            return EatMatrixLayoutRowMajor;
+        else if (name == "allow_uav_condition")
             return EatAllow_uav_condition;
         else if (name == "branch")
             return EatBranch;
