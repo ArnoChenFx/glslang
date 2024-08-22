@@ -1,7 +1,5 @@
 //
-// Copyright (C) 2014 LunarG, Inc.
-// Copyright (C) 2015-2018 Google, Inc.
-//
+// Copyright (C) 2024 The Khronos Group Inc.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -32,37 +30,8 @@
 // LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
+//
 
-#pragma once
-
-#include <string>
-#include <vector>
-
-#include "Logger.h"
-
-namespace glslang {
-class TIntermediate;
-
-struct SpvOptions {
-    bool generateDebugInfo {false};
-    bool stripDebugInfo {false};
-    bool disableOptimizer {true};
-    bool optimizeSize {false};
-    bool disassemble {false};
-    bool validate {false};
-    bool emitNonSemanticShaderDebugInfo {false};
-    bool emitNonSemanticShaderDebugSource{ false };
-    bool compileOnly{false};
-    bool optimizerAllowExpandedIDBound{false};
-};
-
-void GetSpirvVersion(std::string&);
-int GetSpirvGeneratorVersion();
-void GlslangToSpv(const glslang::TIntermediate& intermediate, std::vector<unsigned int>& spirv,
-                  SpvOptions* options = nullptr);
-void GlslangToSpv(const glslang::TIntermediate& intermediate, std::vector<unsigned int>& spirv,
-                  spv::SpvBuildLogger* logger, SpvOptions* options = nullptr);
-bool OutputSpvBin(const std::vector<unsigned int>& spirv, const char* baseName);
-bool OutputSpvHex(const std::vector<unsigned int>& spirv, const char* baseName, const char* varName);
-
-}
+// This empty source file exists to support building stubbed versions of
+// deprecated libraries which have been integrated into the main glslang
+// library. It should be deleted once the stub libraries are fully removed.
